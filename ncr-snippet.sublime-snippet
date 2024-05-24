@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[
+const int Max_N = 1e6 + 10;
+
+vector<int>factorial(Max_N),inv(Max_N);
+
+void Calc_factorial(){
+
+    factorial[0] = 1;
+
+    for(int i=1;i<Max_N;i++){
+
+        factorial[i] = (factorial[i-1] * i) % MOD;
+    }
+}
+
+void inverseModulo(){
+
+    inv[1] = 1;
+
+    inv[0] = 1;
+
+    for(int i=2;i<Max_N;i++){
+
+        inv[i] = inv[MOD%i] * (MOD - MOD/i) % MOD;
+    }
+}
+
+int nCr(int n,int r){
+
+    return (factorial[n] * inv[factorial[r]] % MOD * inv[factorial[n-r]] % MOD);
+}
+
+void pre(){
+
+    Calc_factorial();
+
+    inverseModulo();
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ncr</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

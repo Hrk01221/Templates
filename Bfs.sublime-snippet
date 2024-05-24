@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+const int sz = 1e5;
+vector<int>graph[sz];
+vector<int>vis(sz,0);
+void bfs(int s){
+    queue<int>q;
+    q.push(s);
+    vis[s]=1;
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+        for(auto it : graph[u]){
+            if(!vis[it]){
+                q.push(it);
+                vis[it]=1;
+            }
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
